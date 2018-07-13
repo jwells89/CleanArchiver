@@ -78,7 +78,6 @@
 		B536BA64109C2D7F003C7479 /* CAController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CAController.m; path = CleanArchiver/CAController.m; sourceTree = "<group>"; };
 		B536BA8A109C2E27003C7479 /* CleanArchiver.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = CleanArchiver.icns; path = CleanArchiver/CleanArchiver.icns; sourceTree = "<group>"; };
 		B536BA91109C2EBB003C7479 /* mkdmg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.perl; name = mkdmg; path = CleanArchiver/mkdmg; sourceTree = "<group>"; };
-		B536BA9B109C2F5A003C7479 /* README.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = README.txt; path = CleanArchiver/README.txt; sourceTree = "<group>"; };
 		B536BA9C109C2F5A003C7479 /* version.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = version.plist; path = CleanArchiver/version.plist; sourceTree = "<group>"; };
 		B545ACAD109C342C009CDDE0 /* Japanese */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Japanese; path = CleanArchiver/Localized/Japanese.lproj/CleanArchiverHelp; sourceTree = "<group>"; };
 		B545ACBE109C34C5009CDDE0 /* English */ = {isa = PBXFileReference; lastKnownFileType = folder; name = English; path = CleanArchiver/Localized/English.lproj/CleanArchiverHelp; sourceTree = "<group>"; };
@@ -145,7 +144,6 @@
 				29B97317FDCFA39411CA2CEA /* Resources */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				B59E55C407C435CB003F8060 /* Products */,
-				B536BA9B109C2F5A003C7479 /* README.txt */,
 			);
 			name = CleanArchiver;
 			sourceTree = "<group>";
