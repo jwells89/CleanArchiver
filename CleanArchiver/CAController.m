@@ -27,8 +27,6 @@
 //
 
 #import "CAController.h"
-#import "CAView.h"
-#import "Carc.h"
 
 NSString *AOArchiveIndividually	= @"Archive Individually";
 NSString *AOArchiveType		= @"Archive Type";
@@ -100,9 +98,6 @@ NSString *AOReplaceAutomatically= @"Replace Automatically";
     [_internetEnabledDMGCheck
 	setState:[ud boolForKey:AOInternetEnabledDMG]];
 
-    [nc addObserver:self selector:@selector(handleFilesDropped:)
-	name:AOFilesDroppedNotification object:nil];
-
     [nc addObserver:self selector:@selector(handleArchiveTerminated:)
 	name:AOCarcDidFinishArchivingNotification object:nil];
 }
@@ -119,7 +114,6 @@ NSString *AOReplaceAutomatically= @"Replace Automatically";
 
 - (void)applicationWillFinishLaunching:(NSNotification *)n
 {
-
     _operationQueue = [[NSMutableArray alloc] init];
     _archiveSessionInProgress = NO;
     _archivingCancelled = NO;
@@ -128,9 +122,9 @@ NSString *AOReplaceAutomatically= @"Replace Automatically";
 
 - (void)applicationDidFinishLaunching:(NSNotification *)n
 {
-
-    if (_terminateAfterArchiving == -1)
-	_terminateAfterArchiving = NO;
+    if (_terminateAfterArchiving == -1) {
+        _terminateAfterArchiving = NO;
+    }
 }
 
 #pragma mark -
@@ -138,9 +132,9 @@ NSString *AOReplaceAutomatically= @"Replace Automatically";
 
 - (void)application:(NSApplication *)sender openFiles:(NSArray *)filenames
 {
-
-    if (_terminateAfterArchiving == -1)
-	_terminateAfterArchiving = YES;
+    if (_terminateAfterArchiving == -1) {
+        _terminateAfterArchiving = YES;
+    }
     [self prepare:filenames];
 }
 
@@ -161,17 +155,16 @@ NSString *AOReplaceAutomatically= @"Replace Automatically";
     fm = [NSFileManager defaultManager];
 
     if ([[_mainTask output] isKindOfClass:[NSFileHandle class]]) {
-	fh = [_mainTask output];
-	[fh truncateFileAtOffset:[fh offsetInFile]];
-	[fh closeFile];
+        fh = [_mainTask output];
+        [fh truncateFileAtOffset:[fh offsetInFile]];
+        [fh closeFile];
     }
 
     if (_archivingCancelled == NO && [_mainTask terminationStatus] != 0) {
-	NSRunAlertPanel(@"",
-	    [NSString
-		stringWithFormat:NSLocalizedString(@"Can't create %@.",nil),
-		[_mainTask output]],
-	    nil, nil, nil);
+        NSAlert *alert = [[NSAlert alloc] init];
+        [alert setInformativeText: [NSString stringWithFormat:NSLocalizedString(@"Can't create %@.", nil), [_mainTask output]]];
+        [alert setAlertStyle: NSAlertStyleWarning];
+        [alert beginSheetModalForWindow:_window completionHandler:nil];
     }
 
     [[NSWorkspace sharedWorkspace]
@@ -179,13 +172,14 @@ NSString *AOReplaceAutomatically= @"Replace Automatically";
 
     [_mainTask release];
 
-    if ([_operationQueue count] > 0)
-	[self cleanArchive];
-    else {
-	[self endProgressPanel];
-	_archiveSessionInProgress = NO;
-	if (_terminateAfterArchiving == YES)
-	    [NSApp terminate:self];
+    if ([_operationQueue count] > 0) {
+        [self cleanArchive];
+    } else {
+        [self endProgressPanel];
+        _archiveSessionInProgress = NO;
+        if (_terminateAfterArchiving == YES) {
+            [NSApp terminate:self];
+        }
     }
 
     _archivingCancelled = NO;
@@ -215,39 +209,47 @@ NSString *AOReplaceAutomatically= @"Replace Automatically";
 
     [_mainTask terminate];
 
-    if (![dst isEqualToString:@""])
-	[fm removeFileAtPath:dst handler:nil];
+    if (![dst isEqualToString:@""]) {
+        [fm removeItemAtPath:dst error:nil];
+    }
 }
 
 - (IBAction)changeArchiveType:(id)sender
 {
     enum archiveTypeMenuIndex type;
 
-    type = [_archiveTypeMenu indexOfSelectedItem];
+    type = (enum archiveTypeMenuIndex)[_archiveTypeMenu indexOfSelectedItem];
     switch (type) {
-    case DMGT:
-	[_discardRsrcCheck setEnabled:NO];
-	[_discardRsrcCheck setState:NSOffState];
-	[_encodingCBox setEnabled:NO];
-	[_passwordField setEnabled:YES];
-	break;
-    case BZIP2T:
-    case GZIPT:
-	[_discardRsrcCheck setEnabled:YES];
-	[_encodingCBox setEnabled:NO];
-	[_passwordField setEnabled:NO];
-	break;
-    case SZIPT:
-	[_discardRsrcCheck setEnabled:NO];
-	[_discardRsrcCheck setState:NSOnState];
-	[_encodingCBox setEnabled:NO];
-	[_passwordField setEnabled:YES];
-	break;
-    case ZIPT:
-	[_discardRsrcCheck setEnabled:YES];
-	[_encodingCBox setEnabled:YES];
-	[_passwordField setEnabled:YES];
-	break;
+        case DMGT:
+            [_discardRsrcCheck setEnabled:NO];
+            [_discardRsrcCheck setState:NSOffState];
+            [_encodingCBox setEnabled:NO];
+            [_passwordField setEnabled:YES];
+            [_internetEnabledDMGCheck setEnabled:YES];
+            break;
+        case BZIP2T:
+        case GZIPT:
+            [_discardRsrcCheck setEnabled:YES];
+            [_encodingCBox setEnabled:NO];
+            [_passwordField setEnabled:NO];
+            [_internetEnabledDMGCheck setEnabled:NO];
+            [_internetEnabledDMGCheck setState:NSOffState];
+            break;
+        case SZIPT:
+            [_discardRsrcCheck setEnabled:NO];
+            [_discardRsrcCheck setState:NSOnState];
+            [_encodingCBox setEnabled:NO];
+            [_passwordField setEnabled:YES];
+            [_internetEnabledDMGCheck setEnabled:NO];
+            [_internetEnabledDMGCheck setState:NSOffState];
+            break;
+        case ZIPT:
+            [_discardRsrcCheck setEnabled:YES];
+            [_encodingCBox setEnabled:YES];
+            [_passwordField setEnabled:YES];
+            [_internetEnabledDMGCheck setEnabled:NO];
+            [_internetEnabledDMGCheck setState:NSOffState];
+            break;
     }
 }
 
@@ -285,26 +287,19 @@ NSString *AOReplaceAutomatically= @"Replace Automatically";
 
 - (void)beginProgressPanel
 {
-
     [_progressIndicator setIndeterminate:YES];
     [_progressIndicator startAnimation:self];
-    [NSApp beginSheet:_progressWindow
-	modalForWindow:[_excludeDSSCheck window]
-	modalDelegate:self
-	didEndSelector:NULL
-	contextInfo:nil];
+    [[_excludeDSSCheck window] beginSheet:_progressWindow completionHandler:nil];
 }
 
 - (void)beginProgressPanelWithText:(NSString *)s
 {
-
     [_progressMessage setStringValue:s];
     [self beginProgressPanel];
 }
 
 - (void)endProgressPanel
 {
-
     [_progressIndicator stopAnimation:self];
     [_progressWindow orderOut:self];
     [NSApp endSheet:_progressWindow];
@@ -318,10 +313,11 @@ NSString *AOReplaceAutomatically= @"Replace Automatically";
     NSFileManager *fm;
     NSSavePanel *sp;
     NSString *basename, *dirname;
-    int spStatus;
+    NSModalResponse spStatus;
 
-    if (name == nil)
-	return name;
+    if (name == nil) {
+        return name;
+    }
 
     fm = [NSFileManager defaultManager];
     sp = [NSSavePanel savePanel];
@@ -329,13 +325,15 @@ NSString *AOReplaceAutomatically= @"Replace Automatically";
     dirname = [name stringByDeletingLastPathComponent];
 
     if ([fm fileExistsAtPath:name] || [dirname isEqualToString:@""] ) {
-	spStatus = [sp runModalForDirectory:dirname file:basename];
-	if (spStatus == NSFileHandlingPanelOKButton)
-	    return [sp filename];
-	else
-	    return nil;
-    } else
-	return name;
+        spStatus = [sp runModal];
+        if (spStatus == NSModalResponseOK) {
+            return [sp URL].absoluteString;
+        } else {
+            return nil;
+        }
+    } else {
+        return name;
+    }
 }
 
 - (NSString *)getArchiveFileNameWithSourceFileNames:(NSArray *)srcnames
@@ -356,9 +354,10 @@ NSString *AOReplaceAutomatically= @"Replace Automatically";
     switch (type) {
     case DMGT:
 	if (!isDir) {
-	    NSRunAlertPanel(@"", NSLocalizedString(
-		@"You can make a disk image only from a folder.", nil),
-		nil, nil, nil);
+        NSAlert *alert = [[NSAlert alloc] init];
+        [alert setInformativeText: NSLocalizedString(@"You can make a disk image only from a folder.", nil)];
+        [alert setAlertStyle: NSAlertStyleWarning];
+        [alert beginSheetModalForWindow:_window completionHandler:nil];
 	    return nil;
 	}
 	ext = @"dmg";
@@ -422,7 +421,7 @@ NSString *AOReplaceAutomatically= @"Replace Automatically";
     status = [[NSMutableDictionary alloc] init];
 
     fm = [NSFileManager defaultManager];
-    type = [_archiveTypeMenu indexOfSelectedItem];
+    type = (enum archiveTypeMenuIndex) [_archiveTypeMenu indexOfSelectedItem];
     src = [srcs objectAtIndex:0];
     ai = [_archiveIndividuallyCheck state];
     e_ = [_discardRsrcCheck state];
