@@ -78,13 +78,13 @@ NSString *AOReplaceAutomatically= @"Replace Automatically";
 	[ud objectForKey:AOArchiveType]];
     switch ([ud integerForKey:AOCompressionLevel]) {
     case 1:
-	[_compressionLevelMenu selectItemAtIndex:FAST];
+    [_compressionLevelSegmentedControl setSelectedSegment:FAST];
 	break;
     case 9:
-	[_compressionLevelMenu selectItemAtIndex:BEST];
+    [_compressionLevelSegmentedControl setSelectedSegment:BEST];
 	break;
     default:
-	[_compressionLevelMenu selectItemAtIndex:NORMAL];
+	[_compressionLevelSegmentedControl setSelectedSegment:NORMAL];
 	break;
     }
     [self changeArchiveType:self];
@@ -100,6 +100,8 @@ NSString *AOReplaceAutomatically= @"Replace Automatically";
 
     [nc addObserver:self selector:@selector(handleArchiveTerminated:)
 	name:AOCarcDidFinishArchivingNotification object:nil];
+    
+    [[_window standardWindowButton:NSWindowZoomButton] setHidden:true];
 }
 
 - (void)dealloc {
@@ -261,7 +263,7 @@ NSString *AOReplaceAutomatically= @"Replace Automatically";
     ud = [NSUserDefaults standardUserDefaults];
 
     [ud setObject:[_archiveTypeMenu titleOfSelectedItem] forKey:AOArchiveType];
-    switch ([_compressionLevelMenu indexOfSelectedItem]) {
+    switch ([_compressionLevelSegmentedControl selectedSegment]) {
     case FAST:
 	    level = 1;
 	    break;
@@ -440,7 +442,7 @@ NSString *AOReplaceAutomatically= @"Replace Automatically";
     if (i < [encoding length])
 	encoding = [encoding substringToIndex:i];
 
-    switch ([_compressionLevelMenu indexOfSelectedItem]) {
+    switch ([_compressionLevelSegmentedControl selectedSegment]) {
     case FAST:
 	level = 1;
 	break;

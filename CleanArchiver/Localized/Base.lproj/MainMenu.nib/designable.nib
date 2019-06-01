@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14113" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14113"/>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14460.31"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -11,7 +12,7 @@
             </connections>
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
-        <customObject id="-3" userLabel="Application"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <menu title="MainMenu" systemMenu="main" id="29" userLabel="MainMenu">
             <items>
                 <menuItem title="CleanArchiver" id="56">
@@ -89,27 +90,19 @@
         <window title="CleanArchiver" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" frameAutosaveName="MainWindow" animationBehavior="default" id="220" userLabel="MainWindow">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="385" y="185" width="245" height="293"/>
+            <rect key="contentRect" x="385" y="185" width="277" height="293"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1024" height="746"/>
             <view key="contentView" id="221">
-                <rect key="frame" x="0.0" y="0.0" width="245" height="293"/>
+                <rect key="frame" x="0.0" y="0.0" width="277" height="293"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView id="281" customClass="CAView">
-                        <rect key="frame" x="0.0" y="0.0" width="245" height="293"/>
+                        <rect key="frame" x="0.0" y="0.0" width="277" height="293"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="466"/>
                     </imageView>
-                    <button imageHugsTitle="YES" id="226">
-                        <rect key="frame" x="18" y="98" width="145" height="18"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <buttonCell key="cell" type="check" title="Archive Individually" bezelStyle="regularSquare" imagePosition="leading" alignment="left" inset="2" id="459">
-                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                            <font key="font" metaFont="system"/>
-                        </buttonCell>
-                    </button>
                     <button verticalHuggingPriority="750" imageHugsTitle="YES" id="228">
-                        <rect key="frame" x="95" y="12" width="136" height="32"/>
+                        <rect key="frame" x="127" y="13" width="136" height="32"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <buttonCell key="cell" type="push" title="Save as Default" bezelStyle="rounded" alignment="center" borderStyle="border" inset="2" id="460">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -120,11 +113,11 @@
                         </connections>
                     </button>
                     <popUpButton verticalHuggingPriority="750" imageHugsTitle="YES" id="229">
-                        <rect key="frame" x="87" y="250" width="141" height="26"/>
+                        <rect key="frame" x="87" y="250" width="173" height="26"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <popUpButtonCell key="cell" type="push" title="gzip" bezelStyle="rounded" alignment="left" lineBreakMode="clipping" state="on" borderStyle="borderAndBezel" inset="2" arrowPosition="arrowAtCenter" preferredEdge="maxY" selectedItem="321" id="461">
                             <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" metaFont="system"/>
+                            <font key="font" metaFont="menu"/>
                             <menu key="menu" title="OtherViews" id="230">
                                 <items>
                                     <menuItem title="Disk Image" keyEquivalent="d" id="320"/>
@@ -139,37 +132,20 @@
                             <action selector="changeArchiveType:" target="244" id="285"/>
                         </connections>
                     </popUpButton>
-                    <popUpButton verticalHuggingPriority="750" imageHugsTitle="YES" id="361">
-                        <rect key="frame" x="87" y="221" width="141" height="26"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <popUpButtonCell key="cell" type="push" title="Normal" bezelStyle="rounded" alignment="left" lineBreakMode="clipping" state="on" borderStyle="borderAndBezel" inset="2" arrowPosition="arrowAtCenter" preferredEdge="maxY" selectedItem="367" id="471">
-                            <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                    <segmentedControl verticalHuggingPriority="750" id="uKX-ES-vV4">
+                        <rect key="frame" x="87" y="222" width="173" height="24"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="o20-2f-xA1">
                             <font key="font" metaFont="system"/>
-                            <menu key="menu" title="OtherViews" id="363">
-                                <items>
-                                    <menuItem title="Fast" id="364">
-                                        <modifierMask key="keyEquivalentModifierMask"/>
-                                    </menuItem>
-                                    <menuItem title="Normal" state="on" id="367">
-                                        <modifierMask key="keyEquivalentModifierMask"/>
-                                    </menuItem>
-                                    <menuItem title="Best" id="365">
-                                        <modifierMask key="keyEquivalentModifierMask"/>
-                                    </menuItem>
-                                </items>
-                            </menu>
-                        </popUpButtonCell>
-                    </popUpButton>
-                    <button imageHugsTitle="YES" id="232">
-                        <rect key="frame" x="18" y="118" width="136" height="18"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <buttonCell key="cell" type="check" title="Exclude .DS_Store" bezelStyle="regularSquare" imagePosition="leading" alignment="left" state="on" inset="2" id="462">
-                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                            <font key="font" metaFont="system"/>
-                        </buttonCell>
-                    </button>
+                            <segments>
+                                <segment label="Fast" width="56"/>
+                                <segment label="Normal" width="55" selected="YES" tag="1"/>
+                                <segment label="Best" width="55"/>
+                            </segments>
+                        </segmentedCell>
+                    </segmentedControl>
                     <textField verticalHuggingPriority="750" id="233">
-                        <rect key="frame" x="17" y="256" width="53" height="17"/>
+                        <rect key="frame" x="33" y="255" width="51" height="17"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="right" title="Format:" id="463">
                             <font key="font" metaFont="system"/>
@@ -178,7 +154,7 @@
                         </textFieldCell>
                     </textField>
                     <textField verticalHuggingPriority="750" id="359">
-                        <rect key="frame" x="17" y="227" width="41" height="17"/>
+                        <rect key="frame" x="44" y="226" width="40" height="17"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="right" title="Level:" id="470">
                             <font key="font" metaFont="system"/>
@@ -187,57 +163,33 @@
                         </textFieldCell>
                     </textField>
                     <textField verticalHuggingPriority="750" id="337">
-                        <rect key="frame" x="17" y="167" width="68" height="17"/>
+                        <rect key="frame" x="16" y="168" width="68" height="17"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" title="Password:" id="468">
+                        <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="right" title="Password:" id="468">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
                     <textField verticalHuggingPriority="750" id="436">
-                        <rect key="frame" x="17" y="197" width="68" height="17"/>
+                        <rect key="frame" x="16" y="197" width="68" height="17"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" title="Encoding:" id="473">
+                        <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="right" title="Encoding:" id="473">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <button imageHugsTitle="YES" id="234">
-                        <rect key="frame" x="18" y="58" width="203" height="18"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <buttonCell key="cell" type="check" title="Internet-Enabled Disk Image" bezelStyle="regularSquare" imagePosition="leading" alignment="left" inset="2" id="464">
-                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                            <font key="font" metaFont="system"/>
-                        </buttonCell>
-                    </button>
-                    <button imageHugsTitle="YES" id="236">
-                        <rect key="frame" x="18" y="78" width="161" height="18"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <buttonCell key="cell" type="check" title="Replace Automatically" bezelStyle="regularSquare" imagePosition="leading" alignment="left" inset="2" id="465">
-                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                            <font key="font" metaFont="system"/>
-                        </buttonCell>
-                    </button>
                     <box verticalHuggingPriority="750" boxType="separator" id="238">
-                        <rect key="frame" x="12" y="49" width="221" height="5"/>
+                        <rect key="frame" x="12" y="50" width="253" height="4"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </box>
-                    <button imageHugsTitle="YES" id="286">
-                        <rect key="frame" x="18" y="138" width="170" height="18"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <buttonCell key="cell" type="check" title="Discard Resource Forks" bezelStyle="regularSquare" imagePosition="leading" alignment="left" state="on" inset="2" id="467">
-                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                            <font key="font" metaFont="system"/>
-                        </buttonCell>
-                    </button>
                     <secureTextField verticalHuggingPriority="750" id="339">
-                        <rect key="frame" x="90" y="165" width="135" height="22"/>
+                        <rect key="frame" x="90" y="165" width="167" height="22"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <secureTextFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="469">
                             <font key="font" metaFont="system"/>
-                            <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                             <allowedInputSourceLocales>
                                 <string>NSAllRomanInputSourcesLocaleIdentifier</string>
@@ -245,7 +197,7 @@
                         </secureTextFieldCell>
                     </secureTextField>
                     <comboBox verticalHuggingPriority="750" textCompletion="NO" id="391">
-                        <rect key="frame" x="90" y="192" width="138" height="26"/>
+                        <rect key="frame" x="90" y="192" width="170" height="26"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <comboBoxCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" completes="NO" numberOfVisibleItems="5" id="472">
                             <font key="font" metaFont="system"/>
@@ -258,19 +210,59 @@
                             </objectValues>
                         </comboBoxCell>
                     </comboBox>
+                    <button imageHugsTitle="YES" id="226">
+                        <rect key="frame" x="86" y="102" width="124" height="18"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <buttonCell key="cell" type="check" title="Archive Individually" bezelStyle="regularSquare" imagePosition="leading" alignment="left" controlSize="small" inset="2" id="459">
+                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                            <font key="font" metaFont="smallSystem"/>
+                        </buttonCell>
+                    </button>
+                    <button imageHugsTitle="YES" id="232">
+                        <rect key="frame" x="86" y="122" width="118" height="18"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <buttonCell key="cell" type="check" title="Exclude .DS_Store" bezelStyle="regularSquare" imagePosition="leading" alignment="left" controlSize="small" state="on" inset="2" id="462">
+                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                            <font key="font" metaFont="smallSystem"/>
+                        </buttonCell>
+                    </button>
+                    <button imageHugsTitle="YES" id="234">
+                        <rect key="frame" x="86" y="62" width="172" height="18"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <buttonCell key="cell" type="check" title="Internet-Enabled Disk Image" bezelStyle="regularSquare" imagePosition="leading" alignment="left" controlSize="small" inset="2" id="464">
+                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                            <font key="font" metaFont="smallSystem"/>
+                        </buttonCell>
+                    </button>
+                    <button imageHugsTitle="YES" id="236">
+                        <rect key="frame" x="86" y="82" width="138" height="18"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <buttonCell key="cell" type="check" title="Replace Automatically" bezelStyle="regularSquare" imagePosition="leading" alignment="left" controlSize="small" inset="2" id="465">
+                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                            <font key="font" metaFont="smallSystem"/>
+                        </buttonCell>
+                    </button>
+                    <button imageHugsTitle="YES" id="286">
+                        <rect key="frame" x="86" y="142" width="147" height="18"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <buttonCell key="cell" type="check" title="Discard Resource Forks" bezelStyle="regularSquare" imagePosition="leading" alignment="left" controlSize="small" state="on" inset="2" id="467">
+                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                            <font key="font" metaFont="smallSystem"/>
+                        </buttonCell>
+                    </button>
                 </subviews>
             </view>
             <connections>
                 <outlet property="delegate" destination="244" id="267"/>
             </connections>
-            <point key="canvasLocation" x="139" y="606"/>
+            <point key="canvasLocation" x="154.5" y="605.5"/>
         </window>
         <customObject id="244" userLabel="CAController" customClass="CAController">
             <connections>
                 <outlet property="_archiveIndividuallyCheck" destination="226" id="249"/>
                 <outlet property="_archiveTypeMenu" destination="229" id="246"/>
                 <outlet property="_cancelButton" destination="272" id="276"/>
-                <outlet property="_compressionLevelMenu" destination="361" id="369"/>
+                <outlet property="_compressionLevelSegmentedControl" destination="uKX-ES-vV4" id="1E0-aA-5I5"/>
                 <outlet property="_discardRsrcCheck" destination="286" id="457"/>
                 <outlet property="_encodingCBox" destination="391" id="415"/>
                 <outlet property="_excludeDSSCheck" destination="232" id="247"/>

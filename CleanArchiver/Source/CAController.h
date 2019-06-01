@@ -27,6 +27,7 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "CAView.h"
 #import "Carc.h"
 
 // Preference identifiers
@@ -54,6 +55,7 @@ enum compressionLevelMenuIndex {
 
 @interface CAController : NSObject
 {
+    IBOutlet CAView *_mainView;
     IBOutlet NSButton *_archiveIndividuallyCheck;
     IBOutlet NSButton *_cancelButton;
     IBOutlet NSButton *_discardRsrcCheck;
@@ -62,7 +64,7 @@ enum compressionLevelMenuIndex {
     IBOutlet NSButton *_replaceAutomaticallyCheck;
     IBOutlet NSComboBox *_encodingCBox;
     IBOutlet NSPopUpButton *_archiveTypeMenu;
-    IBOutlet NSPopUpButton *_compressionLevelMenu;
+    IBOutlet NSSegmentedControl *_compressionLevelSegmentedControl;
     IBOutlet NSProgressIndicator *_progressIndicator;
     IBOutlet NSSecureTextField *_passwordField;
     IBOutlet NSTextField *_progressMessage;

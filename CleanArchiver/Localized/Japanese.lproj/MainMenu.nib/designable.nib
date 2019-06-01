@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14113" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14113"/>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14460.31"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -11,7 +12,7 @@
             </connections>
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
-        <customObject id="-3" userLabel="Application"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <menu title="MainMenu" systemMenu="main" id="29" userLabel="MainMenu">
             <items>
                 <menuItem title="CleanArchiver" id="56">
@@ -89,27 +90,19 @@
         <window title="CleanArchiver" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" frameAutosaveName="MainWindow" animationBehavior="default" id="220" userLabel="MainWindow">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="395" y="205" width="251" height="267"/>
+            <rect key="contentRect" x="395" y="205" width="277" height="293"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1024" height="746"/>
             <view key="contentView" id="221">
-                <rect key="frame" x="0.0" y="0.0" width="251" height="267"/>
+                <rect key="frame" x="0.0" y="0.0" width="277" height="293"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView id="285" customClass="CAView">
-                        <rect key="frame" x="0.0" y="0.0" width="251" height="267"/>
+                        <rect key="frame" x="0.0" y="0.0" width="277" height="293"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="516"/>
                     </imageView>
-                    <button imageHugsTitle="YES" id="226">
-                        <rect key="frame" x="134" y="78" width="87" height="18"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <buttonCell key="cell" type="check" title="個別に圧縮" bezelStyle="regularSquare" imagePosition="leading" alignment="left" inset="2" id="509">
-                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                            <font key="font" metaFont="system"/>
-                        </buttonCell>
-                    </button>
                     <button verticalHuggingPriority="750" imageHugsTitle="YES" id="228">
-                        <rect key="frame" x="93" y="12" width="144" height="32"/>
+                        <rect key="frame" x="119" y="13" width="144" height="32"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <buttonCell key="cell" type="push" title="初期値として保存" bezelStyle="rounded" alignment="center" borderStyle="border" inset="2" id="510">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -120,11 +113,11 @@
                         </connections>
                     </button>
                     <popUpButton verticalHuggingPriority="750" imageHugsTitle="YES" id="229">
-                        <rect key="frame" x="93" y="224" width="141" height="26"/>
-                        <autoresizingMask key="autoresizingMask"/>
+                        <rect key="frame" x="93" y="250" width="172" height="26"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <popUpButtonCell key="cell" type="push" title="gzip" bezelStyle="rounded" alignment="left" lineBreakMode="clipping" state="on" borderStyle="borderAndBezel" inset="2" arrowPosition="arrowAtCenter" preferredEdge="maxY" selectedItem="326" id="511">
                             <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" metaFont="system"/>
+                            <font key="font" metaFont="menu"/>
                             <menu key="menu" title="OtherViews" id="230">
                                 <items>
                                     <menuItem title="Disk Image" keyEquivalent="d" id="325"/>
@@ -139,56 +132,27 @@
                             <action selector="changeArchiveType:" target="244" id="289"/>
                         </connections>
                     </popUpButton>
-                    <popUpButton verticalHuggingPriority="750" imageHugsTitle="YES" id="349">
-                        <rect key="frame" x="93" y="196" width="141" height="26"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <popUpButtonCell key="cell" type="push" title="Normal" bezelStyle="rounded" alignment="left" lineBreakMode="clipping" state="on" borderStyle="borderAndBezel" inset="2" arrowPosition="arrowAtCenter" preferredEdge="maxY" selectedItem="377" id="521">
-                            <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" metaFont="system"/>
-                            <menu key="menu" title="OtherViews" id="351">
-                                <items>
-                                    <menuItem title="Fast" id="376">
-                                        <modifierMask key="keyEquivalentModifierMask"/>
-                                    </menuItem>
-                                    <menuItem title="Normal" state="on" id="377">
-                                        <modifierMask key="keyEquivalentModifierMask"/>
-                                    </menuItem>
-                                    <menuItem title="Best" id="353">
-                                        <modifierMask key="keyEquivalentModifierMask"/>
-                                    </menuItem>
-                                </items>
-                            </menu>
-                        </popUpButtonCell>
-                    </popUpButton>
-                    <button imageHugsTitle="YES" id="232">
-                        <rect key="frame" x="18" y="98" width="151" height="18"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <buttonCell key="cell" type="check" title=".DS_Store を含めない" bezelStyle="regularSquare" imagePosition="leading" alignment="left" state="on" inset="2" id="512">
-                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                            <font key="font" metaFont="system"/>
-                        </buttonCell>
-                    </button>
                     <textField verticalHuggingPriority="750" id="233">
-                        <rect key="frame" x="17" y="230" width="61" height="17"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" title="圧縮形式:" id="513">
+                        <rect key="frame" x="35" y="256" width="56" height="17"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="right" title="圧縮形式:" id="513">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
                     <textField verticalHuggingPriority="750" id="347">
-                        <rect key="frame" x="17" y="202" width="74" height="17"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" title="圧縮レベル:" id="520">
+                        <rect key="frame" x="23" y="226" width="68" height="17"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="right" title="圧縮レベル:" id="520">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
                     <textField verticalHuggingPriority="750" id="342">
-                        <rect key="frame" x="17" y="144" width="74" height="17"/>
-                        <autoresizingMask key="autoresizingMask"/>
+                        <rect key="frame" x="23" y="168" width="68" height="17"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="right" title="パスワード:" id="518">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -196,48 +160,24 @@
                         </textFieldCell>
                     </textField>
                     <textField verticalHuggingPriority="750" id="466">
-                        <rect key="frame" x="17" y="174" width="74" height="17"/>
-                        <autoresizingMask key="autoresizingMask"/>
+                        <rect key="frame" x="23" y="197" width="68" height="17"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="right" title="文字コード:" id="523">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <button imageHugsTitle="YES" id="234">
-                        <rect key="frame" x="18" y="58" width="203" height="18"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <buttonCell key="cell" type="check" title="Internet-Enabled Disk Image" bezelStyle="regularSquare" imagePosition="leading" alignment="left" inset="2" id="514">
-                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                            <font key="font" metaFont="system"/>
-                        </buttonCell>
-                    </button>
-                    <button imageHugsTitle="YES" id="236">
-                        <rect key="frame" x="18" y="78" width="113" height="18"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <buttonCell key="cell" type="check" title="自動的に上書き" bezelStyle="regularSquare" imagePosition="leading" alignment="left" inset="2" id="515">
-                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                            <font key="font" metaFont="system"/>
-                        </buttonCell>
-                    </button>
                     <box verticalHuggingPriority="750" boxType="separator" id="238">
-                        <rect key="frame" x="12" y="49" width="227" height="5"/>
+                        <rect key="frame" x="12" y="50" width="253" height="5"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </box>
-                    <button imageHugsTitle="YES" id="290">
-                        <rect key="frame" x="18" y="118" width="165" height="18"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <buttonCell key="cell" type="check" title="リソースフォークを破棄" bezelStyle="regularSquare" imagePosition="leading" alignment="left" state="on" inset="2" id="517">
-                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                            <font key="font" metaFont="system"/>
-                        </buttonCell>
-                    </button>
                     <secureTextField verticalHuggingPriority="750" id="344">
-                        <rect key="frame" x="96" y="142" width="135" height="22"/>
+                        <rect key="frame" x="95" y="165" width="167" height="22"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <secureTextFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="519">
                             <font key="font" metaFont="system"/>
-                            <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                             <allowedInputSourceLocales>
                                 <string>NSAllRomanInputSourcesLocaleIdentifier</string>
@@ -245,7 +185,7 @@
                         </secureTextFieldCell>
                     </secureTextField>
                     <comboBox verticalHuggingPriority="750" textCompletion="NO" id="400">
-                        <rect key="frame" x="96" y="168" width="138" height="26"/>
+                        <rect key="frame" x="95" y="192" width="170" height="26"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <comboBoxCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" numberOfVisibleItems="5" id="522">
                             <font key="font" metaFont="system"/>
@@ -260,18 +200,71 @@
                             </objectValues>
                         </comboBoxCell>
                     </comboBox>
+                    <button imageHugsTitle="YES" id="226">
+                        <rect key="frame" x="92" y="102" width="73" height="18"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <buttonCell key="cell" type="check" title="個別に圧縮" bezelStyle="regularSquare" imagePosition="leading" alignment="left" controlSize="small" inset="2" id="509">
+                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                            <font key="font" metaFont="smallSystem"/>
+                        </buttonCell>
+                    </button>
+                    <button imageHugsTitle="YES" id="232">
+                        <rect key="frame" x="92" y="122" width="128" height="18"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <buttonCell key="cell" type="check" title=".DS_Store を含めない" bezelStyle="regularSquare" imagePosition="leading" alignment="left" controlSize="small" state="on" inset="2" id="512">
+                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                            <font key="font" metaFont="smallSystem"/>
+                        </buttonCell>
+                    </button>
+                    <button imageHugsTitle="YES" id="234">
+                        <rect key="frame" x="92" y="62" width="172" height="18"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <buttonCell key="cell" type="check" title="Internet-Enabled Disk Image" bezelStyle="regularSquare" imagePosition="leading" alignment="left" controlSize="small" inset="2" id="514">
+                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                            <font key="font" metaFont="smallSystem"/>
+                        </buttonCell>
+                    </button>
+                    <button imageHugsTitle="YES" id="236">
+                        <rect key="frame" x="92" y="82" width="94" height="18"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <buttonCell key="cell" type="check" title="自動的に上書き" bezelStyle="regularSquare" imagePosition="leading" alignment="left" controlSize="small" inset="2" id="515">
+                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                            <font key="font" metaFont="smallSystem"/>
+                        </buttonCell>
+                    </button>
+                    <button imageHugsTitle="YES" id="290">
+                        <rect key="frame" x="92" y="142" width="134" height="18"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <buttonCell key="cell" type="check" title="リソースフォークを破棄" bezelStyle="regularSquare" imagePosition="leading" alignment="left" controlSize="small" state="on" inset="2" id="517">
+                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                            <font key="font" metaFont="smallSystem"/>
+                        </buttonCell>
+                    </button>
+                    <segmentedControl verticalHuggingPriority="750" id="eih-vV-QOl">
+                        <rect key="frame" x="93" y="222" width="173" height="24"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="JEw-L7-IZG">
+                            <font key="font" metaFont="system"/>
+                            <segments>
+                                <segment label="Fast" width="56"/>
+                                <segment label="Normal" width="55" selected="YES" tag="1"/>
+                                <segment label="Best" width="55"/>
+                            </segments>
+                        </segmentedCell>
+                    </segmentedControl>
                 </subviews>
             </view>
             <connections>
                 <outlet property="delegate" destination="244" id="267"/>
             </connections>
+            <point key="canvasLocation" x="140.5" y="147.5"/>
         </window>
         <customObject id="244" userLabel="CAController" customClass="CAController">
             <connections>
                 <outlet property="_archiveIndividuallyCheck" destination="226" id="249"/>
                 <outlet property="_archiveTypeMenu" destination="229" id="246"/>
                 <outlet property="_cancelButton" destination="272" id="276"/>
-                <outlet property="_compressionLevelMenu" destination="349" id="378"/>
+                <outlet property="_compressionLevelSegmentedControl" destination="eih-vV-QOl" id="LvO-QL-rRQ"/>
                 <outlet property="_discardRsrcCheck" destination="290" id="506"/>
                 <outlet property="_encodingCBox" destination="400" id="423"/>
                 <outlet property="_excludeDSSCheck" destination="232" id="247"/>
