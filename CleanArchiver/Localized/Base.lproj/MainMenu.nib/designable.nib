@@ -90,10 +90,10 @@
         <window title="CleanArchiver" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" frameAutosaveName="MainWindow" animationBehavior="default" id="220" userLabel="MainWindow">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="385" y="185" width="277" height="293"/>
+            <rect key="contentRect" x="385" y="185" width="290" height="293"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1024" height="746"/>
             <view key="contentView" id="221">
-                <rect key="frame" x="0.0" y="0.0" width="277" height="293"/>
+                <rect key="frame" x="0.0" y="0.0" width="290" height="293"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView id="281" customClass="CAView">
@@ -101,19 +101,8 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="466"/>
                     </imageView>
-                    <button verticalHuggingPriority="750" imageHugsTitle="YES" id="228">
-                        <rect key="frame" x="127" y="13" width="136" height="32"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <buttonCell key="cell" type="push" title="Save as Default" bezelStyle="rounded" alignment="center" borderStyle="border" inset="2" id="460">
-                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" metaFont="system"/>
-                        </buttonCell>
-                        <connections>
-                            <action selector="saveAsDefault:" target="244" id="251"/>
-                        </connections>
-                    </button>
                     <popUpButton verticalHuggingPriority="750" imageHugsTitle="YES" id="229">
-                        <rect key="frame" x="87" y="250" width="173" height="26"/>
+                        <rect key="frame" x="87" y="250" width="186" height="26"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <popUpButtonCell key="cell" type="push" title="gzip" bezelStyle="rounded" alignment="left" lineBreakMode="clipping" state="on" borderStyle="borderAndBezel" inset="2" arrowPosition="arrowAtCenter" preferredEdge="maxY" selectedItem="321" id="461">
                             <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
@@ -133,14 +122,14 @@
                         </connections>
                     </popUpButton>
                     <segmentedControl verticalHuggingPriority="750" id="uKX-ES-vV4">
-                        <rect key="frame" x="87" y="222" width="173" height="24"/>
+                        <rect key="frame" x="87" y="222" width="186" height="24"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="o20-2f-xA1">
+                        <segmentedCell key="cell" borderStyle="border" alignment="left" segmentDistribution="fill" style="rounded" trackingMode="selectOne" id="o20-2f-xA1">
                             <font key="font" metaFont="system"/>
                             <segments>
-                                <segment label="Fast" width="56"/>
-                                <segment label="Normal" width="55" selected="YES" tag="1"/>
-                                <segment label="Best" width="55"/>
+                                <segment label="Fast"/>
+                                <segment label="Normal" selected="YES" tag="1"/>
+                                <segment label="Best"/>
                             </segments>
                         </segmentedCell>
                     </segmentedControl>
@@ -181,11 +170,11 @@
                         </textFieldCell>
                     </textField>
                     <box verticalHuggingPriority="750" boxType="separator" id="238">
-                        <rect key="frame" x="12" y="50" width="253" height="4"/>
+                        <rect key="frame" x="12" y="50" width="266" height="4"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </box>
                     <secureTextField verticalHuggingPriority="750" id="339">
-                        <rect key="frame" x="90" y="165" width="167" height="22"/>
+                        <rect key="frame" x="90" y="165" width="180" height="22"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <secureTextFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="469">
                             <font key="font" metaFont="system"/>
@@ -197,7 +186,7 @@
                         </secureTextFieldCell>
                     </secureTextField>
                     <comboBox verticalHuggingPriority="750" textCompletion="NO" id="391">
-                        <rect key="frame" x="90" y="192" width="170" height="26"/>
+                        <rect key="frame" x="90" y="192" width="183" height="26"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <comboBoxCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" completes="NO" numberOfVisibleItems="5" id="472">
                             <font key="font" metaFont="system"/>
@@ -250,12 +239,23 @@
                             <font key="font" metaFont="smallSystem"/>
                         </buttonCell>
                     </button>
+                    <button verticalHuggingPriority="750" imageHugsTitle="YES" id="228">
+                        <rect key="frame" x="140" y="13" width="136" height="32"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <buttonCell key="cell" type="push" title="Save as Default" bezelStyle="rounded" alignment="center" borderStyle="border" inset="2" id="460">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="saveAsDefault:" target="244" id="251"/>
+                        </connections>
+                    </button>
                 </subviews>
             </view>
             <connections>
                 <outlet property="delegate" destination="244" id="267"/>
             </connections>
-            <point key="canvasLocation" x="154.5" y="605.5"/>
+            <point key="canvasLocation" x="154" y="605.5"/>
         </window>
         <customObject id="244" userLabel="CAController" customClass="CAController">
             <connections>
